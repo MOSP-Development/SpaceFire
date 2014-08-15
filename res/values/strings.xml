@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">About Devs</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="android_version">Android Version :</string>
+	<string name="pro">Model Number :</string>
+	<string name="about_msop">About MOSP</string>
+</resources>

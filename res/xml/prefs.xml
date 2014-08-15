@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:spacebout="http://schemas.android.com/apk/res/com.spacefire.androidabout">
+	
+	<PreferenceCategory
+		android:key="devs"
+		android:title="Meet The Developer team!">
+		
+		<com.spacefire.androidabout.widget.DeveloperPreference
+			android:title="SpaceCaker"
+			spacebout:githubHandle="spacecaker"
+			spacebout:githubImage="1889248"
+			spacebout:nameDev="SpaceCaker" />
+
+		<com.spacefire.androidabout.widget.DeveloperPreference
+			android:title="AndroidFire"
+			spacebout:nameDev="AndroidFire"
+			spacebout:githubImage="8417940"
+			spacebout:githubHandle="AndroidFire"/>
+
+		<com.spacefire.androidabout.widget.DeveloperPreference
+			android:title="Mya Ser"
+			spacebout:nameDev="Mya Ser"
+			spacebout:githubImage="8389105"
+			spacebout:githubHandle="myaservip" />			
+	</PreferenceCategory>
+	
+   	<PreferenceCategory
+		android:key="devsite"
+		android:title="Developer Websites">
+		
+	<Preference android:title="View AndroidFire's Website" >
+    	<intent android:action="android.intent.action.VIEW"
+        	    android:data="http://androidfire.github.io" />
+	</Preference>
+   	    		
+	<Preference android:title="View SpaceCakers Website" >
+    	<intent android:action="android.intent.action.VIEW"
+        	    android:data="http://spacecaker.github.io" />
+	</Preference>
+    </PreferenceCategory>				
+</PreferenceScreen>

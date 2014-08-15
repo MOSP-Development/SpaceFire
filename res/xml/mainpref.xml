@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+	<PreferenceCategory 
+		android:title="@string/about_msop">
+        
+		<PreferenceScreen 
+			android:layout="@layout/logo" />
+        
+		<PreferenceScreen 
+			android:title="@string/android_version" 
+			android:key="and_ver"/>
+    
+		<PreferenceScreen 
+			android:title="@string/pro" 
+			android:key="pro"/>
+     
+		<PreferenceScreen 
+			android:title="ROM :" 
+			android:key="rom"/>    
+     
+		<PreferenceScreen 
+			android:title="Meet MOSP Team" >
+			<intent 
+				android:targetPackage="com.spacefire.androidabout" 
+				android:action="android.intent.action.MAIN" 
+				android:targetClass="com.spacefire.androidabout.SettingsActivity" />   
+		</PreferenceScreen>
+
+	</PreferenceCategory>
+
+</PreferenceScreen>
