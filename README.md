@@ -1,7 +1,7 @@
 SpaceFire
 =========
 
-Fully rebased by spacecaker and rebuilded.
+Fully rebased by spacecaker and Androidfire and rebuilded.
 This wil be a replacement of the original android "About Phone" Page.
 In this we have added the extra features:
 Meet the Devs: an option that uses urlimageviewhelper to fetch the "Github" profile pictures and displays them in listview,
@@ -12,6 +12,11 @@ Kernel Version
 Rom name
 phone model number.
 Also we have added MOSP KK Platlogo 
+
+SpaceFire = 
+SpaceCacker = Space
+AndroidFire = Fire
+== SpaceFire
 
 Credits;
 ========
