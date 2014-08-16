@@ -4,12 +4,17 @@
 		android:title="@string/about_msop">
         
 		<PreferenceScreen 
-			android:layout="@layout/logo" />
+			android:layout="@layout/logo"
+			android:key="donothing" />
         
 		<PreferenceScreen 
 			android:title="@string/android_version" 
 			android:key="and_ver"/>
     
+		<PreferenceScreen 
+			android:title="Kernel version" 
+			android:key="kernel_ver"/>
+				
 		<PreferenceScreen 
 			android:title="@string/pro" 
 			android:key="pro"/>
@@ -19,13 +24,9 @@
 			android:key="rom"/>    
      
 		<PreferenceScreen 
-			android:title="Meet MOSP Team" >
-			<intent 
-				android:targetPackage="com.spacefire.androidabout" 
-				android:action="android.intent.action.MAIN" 
-				android:targetClass="com.spacefire.androidabout.SettingsActivity" />   
-		</PreferenceScreen>
-
+		    android:key="developers"
+			android:title="Meet MOSP Team" />   
+ 		
 	</PreferenceCategory>
 
 </PreferenceScreen>

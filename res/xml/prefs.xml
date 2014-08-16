@@ -23,7 +23,13 @@
 			android:title="Mya Ser"
 			spacebout:nameDev="Mya Ser"
 			spacebout:githubImage="8389105"
-			spacebout:githubHandle="myaservip" />			
+			spacebout:githubHandle="myaservip" />
+		
+		<com.spacefire.androidabout.widget.DeveloperPreference
+			android:title="MOSP-Development"
+			spacebout:nameDev="MOSP-Development"
+			spacebout:githubImage="8456732"
+			spacebout:githubHandle="MOSP-Development" />						
 	</PreferenceCategory>
 	
    	<PreferenceCategory
