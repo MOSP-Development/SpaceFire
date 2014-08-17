@@ -12,9 +12,13 @@
 			android:key="and_ver"/>
     
 		<PreferenceScreen 
-			android:title="Kernel version" 
+			android:title="Kernel version :" 
 			android:key="kernel_ver"/>
-				
+		
+		<PreferenceScreen 
+			android:title="Device CPU:" 
+			android:key="cpu"/>
+		
 		<PreferenceScreen 
 			android:title="@string/pro" 
 			android:key="pro"/>
