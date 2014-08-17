@@ -1,35 +1,26 @@
 package com.spacefire.androidabout;
 	
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import android.os.Build;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.os.UserHandle;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Bundle;
 
 	public class MainSettings extends PreferenceActivity {
+		private static final String KEY_BASEBAND_VERSION = "baseband_version";
 		long[] mHits = new long[3];
 		
 	    @Override
@@ -47,6 +38,10 @@ import android.os.Bundle;
 	        
 	        Preference ROM = (Preference) findPreference("rom");
 	        ROM.setSummary("MOSP");
+	        
+	        Preference CPU = (Preference) findPreference("cpu");
+	        findPreference("cpu").setSummary(getCPUInfo());
+	        
 	        
 	        Preference Donithing = (Preference) findPreference("donothing");
 	        Donithing.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -96,8 +91,8 @@ import android.os.Bundle;
 	            if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
 	            	Toast.makeText(getApplicationContext(), "You own a "+android.os.Build.MANUFACTURER+" - "+android.os.Build.MODEL+" device Running Android "+android.os.Build.VERSION.RELEASE, Toast.LENGTH_LONG).show();
 	            }	            
-	        } 	        
-	        return super.onPreferenceTreeClick(preferenceScreen, preference);
+	        } 	     
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
 	    }
 	    
 	    private String getFormattedKernelVersion() {
@@ -119,7 +114,7 @@ import android.os.Bundle;
 	                "\\((?:[^(]*\\([^)]*\\))?[^)]*\\)\\s+" + /* ignore: (gcc ..) */
 	                "([^\\s]+)\\s+" + /* group 3: #26 */
 	                "(?:PREEMPT\\s+)?" + /* ignore: PREEMPT (optional) */
-	                "(.+)"; /* group 4: date */
+	                "(.+)";/* group 4: date */
 
 	            Pattern p = Pattern.compile(PROC_VERSION_REGEX);
 	            Matcher m = p.matcher(procVersionStr);
@@ -137,4 +132,33 @@ import android.os.Bundle;
 	            return "Unavailable";
 	        }
 	    }	    
+	      private String getCPUInfo() {
+	            String[] info = null;
+	            BufferedReader reader = null;
+
+	            try {
+	               // Grab a reader to /proc/cpuinfo
+	               reader = new BufferedReader (new InputStreamReader(new FileInputStream("/proc/cpuinfo")), 1000);
+
+	               // Grab a single line from cpuinfo
+	               String line = reader.readLine();
+
+	               // Split on the colon, we need info to the right of colon
+	               info = line.split(":");
+	            }
+	            catch(IOException io) {
+	               io.printStackTrace();
+	               info = new String[1];
+	               info[1] = "error";
+	            }
+	            finally {
+	               // Make sure the reader is closed no matter what
+	               try { reader.close(); }
+	               catch(Exception e) {}
+	               reader = null;
+	            }
+
+	            return info[1];
+	          }
+	    
 	}
